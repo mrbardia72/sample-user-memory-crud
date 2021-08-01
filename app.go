@@ -1,21 +1,20 @@
-package controllers
-
+package main
 import (
 	"fmt"
 	"strings"
 )
 
-func PrintMenu() {
+func init() {
 	fmt.Println(strings.ToUpper("0- remove user"))
 	fmt.Println(strings.ToUpper("1- listUsers"))
 	fmt.Println(strings.ToUpper("2- getUserByIndex"))
 	fmt.Println(strings.ToUpper("3- createUser"))
 	fmt.Println(strings.ToUpper("4- updateUser"))
 	fmt.Println(strings.ToUpper("5- exit"))
-	doTask()
+	//doTask()
 }
 
-func doTask() {
+func main() {
 	var option string
 	_, err := fmt.Scanln(&option)
 	if err != nil {
@@ -24,33 +23,16 @@ func doTask() {
 
 	switch option {
 	case "0":
-		removeUser()
-		PrintMenu()
+		fmt.Println("00000000")
 	case "1":
-		listUsers()
-		PrintMenu()
+		fmt.Println("1111111111")
 	case "2":
-		getUserByIndex()
-		PrintMenu()
+		fmt.Println("2222222222")
 
 	case "3":
-		createUser()
-		PrintMenu()
-	case "4":
-		updateUser()
-		PrintMenu()
-	case "5":
 		break
 	default:
 		fmt.Println("Select an option from the list")
-		PrintMenu()
+		//PrintMenu()
 	}
-}
-
-func PrintHeader() {
-	decorator := "*"
-	title := "* user memory crud *"
-	fmt.Println(strings.Repeat(decorator, len(title)))
-	fmt.Println(strings.ToUpper(title))
-	fmt.Println(strings.Repeat(decorator, len(title)))
 }

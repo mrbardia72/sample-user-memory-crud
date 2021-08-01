@@ -8,18 +8,18 @@ help: ## Shows help
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 .DEFAULT_GOAL := help
 
-###
+### check pkg on win/linux/mac
 
 .which-go:
 	@which go > /dev/null || (echo "install go from https://golang.org/dl/" & exit 1)
 
 .PHONY: format
-format: .which-go ## Formats Go files
+format: .which-go ## Formats Go files tset indent
 	gofmt -s -w $(ROOT)
 
 .which-lint:
 	@which golangci-lint > /dev/null || (echo "install golangci-lint from https://github.com/golangci/golangci-lint" & exit 1)
 
 .PHONY: lint
-lint: .which-lint ## Checks code with Golang CI Lint
+lint: .which-lint ## Checks code with Golang CI Lint test code
 	golangci-lint run
